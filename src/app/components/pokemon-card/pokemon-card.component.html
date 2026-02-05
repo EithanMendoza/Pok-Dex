@@ -1,0 +1,33 @@
+<div class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-5 flex flex-col items-center border border-gray-200 hover:border-gray-300 h-full relative overflow-hidden group cursor-pointer hover:-translate-y-1">
+
+    <!-- Decorative background circle -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-gray-50 group-hover:bg-gray-100 group-hover:scale-110 transition-all duration-500"></div>
+  
+    <!-- ID Badge -->
+    <span class="self-end bg-gray-100 group-hover:bg-gray-200 text-gray-500 text-[10px] font-bold px-2 py-0.5 rounded-full z-10 tracking-wide transition-colors duration-300">
+      #{{ data.id | number:'3.0-0' }}
+    </span>
+  
+    <!-- Pokemon Image -->
+    <div class="w-36 h-36 my-3 flex items-center justify-center z-10">
+      <img [src]="data.image" [alt]="data.name" loading="lazy"
+           class="w-full h-full object-contain drop-shadow-lg group-hover:drop-shadow-2xl group-hover:scale-110 transition-all duration-300 ease-out"
+           (error)="handleImageError($event)">
+    </div>
+  
+    <!-- Name -->
+    <h2 class="text-lg font-extrabold text-gray-800 capitalize mb-3 z-10 tracking-tight">
+      {{ data.name }}
+    </h2>
+  
+    <!-- Type Badges -->
+    <div class="flex gap-1.5 flex-wrap justify-center z-10">
+      <span *ngFor="let type of data.types"
+            [class]="getTypeColor(type)"
+            class="px-3 py-1 rounded-full text-[11px] text-white font-semibold capitalize tracking-wide shadow-sm hover:scale-105 transition-transform duration-200">
+        {{ type }}
+      </span>
+    </div>
+  
+  </div>
+  
